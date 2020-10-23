@@ -72,6 +72,30 @@ Sub Test1()
     'Used to test if the arrays are all the same size, so all data matches up to the correct UID
     'MsgBox ("The total length of all arrays is: " & CountIndex & " " & WorksheetFunction.CountA(VarId) & " " & WorksheetFunction.CountA(UpComplete) & " " & WorksheetFunction.CountA(UpRemain) & " " & WorksheetFunction.CountA(UpStart) & " " & WorksheetFunction.CountA(UpFinish) & " " & WorksheetFunction.CountA(ColNotes))
 
+    'Create Workbook
+    Dim oExcel As Object
+    Dim oBook As Object
+    Dim oSheet As Object
+
+    'Create a new workbook in Excel
+    Set oExcel = CreateObject("Excel.Application")
+    Set oBook = oExcel.Workbooks.Add
+
+    'Add headers to Worksheet
+    Set oSheet = oBook.Worksheets(1)
+    oSheet.Range("B1:G1").Value = Array("UID", "", "", "", "", "")
+
+    'Transfer arrays to the worksheet
+    'When using a 2D array use: oSheet.Range("").Resize(<rows>, <columns>).Value = DataArray
+
+    'Loop through each array going down the specified column
+    'Set variable to use to loop through the row: x
+    'Set variable to use for the index: y
+
+
+    'Save workbook and quit excel
+    'oBook.SaveAs "<File Path>"
+    oExcel.Quit
 
 'Test Code
 
