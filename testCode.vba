@@ -83,19 +83,58 @@ Sub Test1()
 
     'Add headers to Worksheet
     Set oSheet = oBook.Worksheets(1)
-    oSheet.Range("B1:G1").Value = Array("UID", "", "", "", "", "")
+    oSheet.Range("B1:G1").Value = Array("UID", "Updated %Complete", "Updated Remaining Cost/Work", "Updated Start", "Updated Start", "Updated Finish")
 
     'Transfer arrays to the worksheet
     'When using a 2D array use: oSheet.Range("").Resize(<rows>, <columns>).Value = DataArray
 
     'Loop through each array going down the specified column
     'Set variable to use to loop through the row: x
+    Dim x As Integer
     'Set variable to use for the index: y
+    Dim y As Integer
+
+    'Loop starting at row 2
+    For x = 2 To x = (CountIndex + 1)
+
+        'Run through VarId array
+        For y = 0 To y = CountIndex
+            oSheet.Range("B" & x).Value = VarId(y)
+        Next y
+
+        'Run through UpComplete array
+        For y = 0 To y = CountIndex
+            oSheet.Range("C" & x).Value = UpComplete(y)
+        Next y
+
+        'Run through UpRemain array
+        For y = 0 To y = CountIndex
+            oSheet.Range("D" & x).Value = UpRemain(y)
+        Next y
+
+        'Run through UpStart array
+        For y = 0 To y = CountIndex
+            oSheet.Range("E" & x).Value = UpStart(y)
+        Next y
+
+        'Run through UpFinish array
+        For y = 0 To y = CountIndex
+            oSheet.Range("F" & x).Value = UpFinish(y)
+        Next y
+
+        'Run through ColNotes array
+        For y = 0 To y = CountIndex
+            oSheet.Range("G" & x).Value = ColNotes(y)
+        Next y
+
+
+    Next x
+
 
 
     'Save workbook and quit excel
-    'oBook.SaveAs "<File Path>"
-    oExcel.Quit
+    'oBook.SaveAs "C:\Users\Scott\Documents\TestReports\Report1.xls"
+    'oExcel.Quit
 
 'Test Code
 
