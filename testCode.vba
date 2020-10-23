@@ -34,7 +34,7 @@ Sub Test1()
         'Identify if column "I" has data, use an or statement to check subsequent columns
         'Column B is only used if there is value in the designated columns in the same row,
         'therefore it is not checked in the If statement
-        If Range("I" & i).Value Or Range("K" & i).Value Or Range("O" & i).Value Or Range("Q" & i).Value Or Range("R" & i).Value Then
+        If Range("I" & i).Value <> "" Or Range("K" & i).Value <> "" Or Range("O" & i).Value <> "" Or Range("Q" & i).Value <> "" Or Range("R" & i).Value <> "" Then
             'Add value to the designated B columns array at the index determined by the CountIndex variable
             ReDim Preserve VarId(CountIndex)
             VarId(CountIndex) = Range("B" & i).Value
@@ -69,7 +69,8 @@ Sub Test1()
 
     Loop
 
-    MsgBox ("The total length of the arrays is: " & CountIndex)
+    'Used to test if the arrays are all the same size, so all data matches up to the correct UID
+    'MsgBox ("The total length of all arrays is: " & CountIndex & " " & WorksheetFunction.CountA(VarId) & " " & WorksheetFunction.CountA(UpComplete) & " " & WorksheetFunction.CountA(UpRemain) & " " & WorksheetFunction.CountA(UpStart) & " " & WorksheetFunction.CountA(UpFinish) & " " & WorksheetFunction.CountA(ColNotes))
 
 
 'Test Code
