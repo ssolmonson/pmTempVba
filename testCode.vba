@@ -13,12 +13,12 @@ Sub Test1()
     LastRowInWorksheet = Cells(Rows.Count, "B").End(xlUp).Row
 
     'Create Arrays for each column needed, including UID (Columns: B, I, K, O, Q, R)
-    Dim VarId()
-    Dim UpComplete()
-    Dim UpRemain()
-    Dim UpStart()
-    Dim UpFinish()
-    Dim ColNotes()
+    Dim VarId() As Variant
+    Dim UpComplete() As Variant
+    Dim UpRemain() As Variant
+    Dim UpStart() As Variant
+    Dim UpFinish() As Variant
+    Dim ColNotes() As Variant
 
     'Determines Row
     Dim i As Integer
@@ -36,27 +36,33 @@ Sub Test1()
         'therefore it is not checked in the If statement
         If Range("I" & i).Value Or Range("K" & i).Value Or Range("O" & i).Value Or Range("Q" & i).Value Or Range("R" & i).Value Then
             'Add value to the designated B columns array at the index determined by the CountIndex variable
-            UpComplete(CountIndex) = Range("B" & i).Value
+            ReDim Preserve VarId(CountIndex)
+            VarId(CountIndex) = Range("B" & i).Value
 
             'Add value to the designated I columns array at the index determined by the CountIndex variable
+            ReDim Preserve UpComplete(CountIndex)
             UpComplete(CountIndex) = Range("I" & i).Value
 
             'Add value to the designated K columns array at the index determined by the CountIndex variable
-            UpComplete(CountIndex) = Range("K" & i).Value
+            ReDim Preserve UpRemain(CountIndex)
+            UpRemain(CountIndex) = Range("K" & i).Value
 
             'Add value to the designated O columns array at the index determined by the CountIndex variable
-            UpComplete(CountIndex) = Range("O" & i).Value
+            ReDim Preserve UpStart(CountIndex)
+            UpStart(CountIndex) = Range("O" & i).Value
 
             'Add value to the designated Q columns array at the index determined by the CountIndex variable
-            UpComplete(CountIndex) = Range("Q" & i).Value
+            ReDim Preserve UpFinish(CountIndex)
+            UpFinish(CountIndex) = Range("Q" & i).Value
 
             'Add value to the designated R columns array at the index determined by the CountIndex variable
-            UpComplete(CountIndex) = Range("R" & i).Value
+            ReDim Preserve ColNotes(CountIndex)
+            ColNotes(CountIndex) = Range("R" & i).Value
 
             'Add 1 to the counter, this will define indicies of the arrays
             CountIndex = CountIndex + 1
 
-        Next
+        End If
 
         'Add one to the i variable, indicating to move on to the next row
         i = i + 1
