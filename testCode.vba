@@ -101,7 +101,11 @@ Sub Test1()
     Do Until y = CountIndex
 
         oSheet.Range("B2").Offset(y, 0).Value = VarId(y)
-
+        oSheet.Range("C2").Offset(y, 0).Value = UpComplete(y)
+        oSheet.Range("D2").Offset(y, 0).Value = UpRemain(y)
+        oSheet.Range("E2").Offset(y, 0).Value = UpStart(y)
+        oSheet.Range("F2").Offset(y, 0).Value = UpFinish(y)
+        oSheet.Range("G2").Offset(y, 0).Value = ColNotes(y)
 
         y = y + 1
     Loop
