@@ -1,12 +1,11 @@
 Sub Test1()
 
-
 'If cell is not empty in on yellow columns only
 'If cell has an entry grab UID and put in new Excel sheet
 
 'Hard code each column (in this case hard code columns (I, K, O, Q, R)
-
 'End when sheet ends, find function to determine when spreadsheet is done, to avoid continuous loops down
+
 
 'Define last used cells row in the range with End(xlUp)
     Dim LastRowInWorksheet As Long
@@ -21,12 +20,12 @@ Sub Test1()
     Dim UpFinish() As Variant
     Dim ColNotes() As Variant
 
-    'Determines Row
-    Dim i As Integer
     'Initiates starting index to use for the arrays
     Dim CountIndex As Integer
-
     CountIndex = 0
+
+    'Determines Row
+    Dim i As Integer
     'Starting row which contains data of value
     i = 8
 
@@ -70,9 +69,6 @@ Sub Test1()
 
     Loop
 
-    'Used to test if the arrays are all the same size, so all data matches up to the correct UID
-    'MsgBox ("The total length of all arrays is: " & CountIndex & " " & WorksheetFunction.CountA(VarId) & " " & WorksheetFunction.CountA(UpComplete) & " " & WorksheetFunction.CountA(UpRemain) & " " & WorksheetFunction.CountA(UpStart) & " " & WorksheetFunction.CountA(UpFinish) & " " & WorksheetFunction.CountA(ColNotes))
-
     'Create Workbook
     Dim oExcel As Object
     Dim oBook As Object
@@ -90,13 +86,8 @@ Sub Test1()
     'When using a 2D array use: oSheet.Range("").Resize(<rows>, <columns>).Value = DataArray
 
     'Loop through each array going down the specified column
-    'Set variable to use to loop through the row: x
-    Dim x As Integer
     'Set variable to use for the index: y
     Dim y As Integer
-    'Set end row variable
-    Dim EndRow As Integer
-    EndRow = CountIndex + 1
 
     Do Until y = CountIndex
 
@@ -112,11 +103,11 @@ Sub Test1()
 
 
 
-    'Save workbook and quit excel
+    'Save workbook and quit the newly created excel sheet
     oBook.SaveAs "C:\Users\Scott\Documents\TestReports\Report4.xlsx"
     oExcel.Quit
 
-'Test Code
+  'Test Code
 
     'Dim lastRow As Long
     'Dim lastCol As Long
@@ -131,7 +122,13 @@ Sub Test1()
     'Finds the value of the cell
     'Worksheets("").Range("").Value
 
-'Debug.Print (lastRowInWorksheet)
+    'Used to test if the arrays are all the same size, so all data matches up to the correct UID
+    'MsgBox ("The total length of all arrays is: " & CountIndex & " " & WorksheetFunction.CountA(VarId) & " " & WorksheetFunction.CountA(UpComplete) & " " & WorksheetFunction.CountA(UpRemain) & " " & WorksheetFunction.CountA(UpStart) & " " & WorksheetFunction.CountA(UpFinish) & " " & WorksheetFunction.CountA(ColNotes))
+
+    'Test varying array indicies to ensure data is being entered correctly off a test file
+    'MsgBox ("Test varying indicies: " & " " & VarId(2) & " " & VarId(6) & " " & Var(12) & " " & Var(24)
+
+  'Debug.Print (lastRowInWorksheet)
 
 
 End Sub
