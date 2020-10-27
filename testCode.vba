@@ -1,5 +1,6 @@
 Sub Test1()
 
+
 'If cell is not empty in on yellow columns only
 'If cell has an entry grab UID and put in new Excel sheet
 
@@ -93,48 +94,23 @@ Sub Test1()
     Dim x As Integer
     'Set variable to use for the index: y
     Dim y As Integer
+    'Set end row variable
+    Dim EndRow As Integer
+    EndRow = CountIndex + 1
 
-    'Loop starting at row 2
-    For x = 2 To x = (CountIndex + 1)
+    Do Until y = CountIndex
 
-        'Run through VarId array
-        For y = 0 To y = CountIndex
-            oSheet.Range("B" & x).Value = VarId(y)
-        Next y
-
-        'Run through UpComplete array
-        For y = 0 To y = CountIndex
-            oSheet.Range("C" & x).Value = UpComplete(y)
-        Next y
-
-        'Run through UpRemain array
-        For y = 0 To y = CountIndex
-            oSheet.Range("D" & x).Value = UpRemain(y)
-        Next y
-
-        'Run through UpStart array
-        For y = 0 To y = CountIndex
-            oSheet.Range("E" & x).Value = UpStart(y)
-        Next y
-
-        'Run through UpFinish array
-        For y = 0 To y = CountIndex
-            oSheet.Range("F" & x).Value = UpFinish(y)
-        Next y
-
-        'Run through ColNotes array
-        For y = 0 To y = CountIndex
-            oSheet.Range("G" & x).Value = ColNotes(y)
-        Next y
+        oSheet.Range("B2").Offset(y, 0).Value = VarId(y)
 
 
-    Next x
+        y = y + 1
+    Loop
 
 
 
     'Save workbook and quit excel
-    'oBook.SaveAs "C:\Users\Scott\Documents\TestReports\Report1.xls"
-    'oExcel.Quit
+    oBook.SaveAs "C:\Users\Scott\Documents\TestReports\Report4.xlsx"
+    oExcel.Quit
 
 'Test Code
 
@@ -152,5 +128,6 @@ Sub Test1()
     'Worksheets("").Range("").Value
 
 'Debug.Print (lastRowInWorksheet)
+
 
 End Sub
